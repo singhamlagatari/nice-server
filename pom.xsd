@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://maven.apache.org/POM/4.0.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="project" type="ns:projectType" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+  <xs:complexType name="buildType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="finalName"/>
+      <xs:element type="ns:pluginsType" name="plugins" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dependencyType">
+    <xs:sequence>
+      <xs:element name="groupId">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="junit"/>
+            <xs:enumeration value="org.glassfish.jersey.bundles"/>
+            <xs:enumeration value="org.glassfish.jersey.media"/>
+            <xs:enumeration value="mysql"/>
+            <xs:enumeration value="org.springframework"/>
+            <xs:enumeration value="com.google.code.gson"/>
+            <xs:enumeration value="org.hibernate"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="artifactId">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="junit"/>
+            <xs:enumeration value="jaxrs-ri"/>
+            <xs:enumeration value="jersey-media-moxy"/>
+            <xs:enumeration value="mysql-connector-java"/>
+            <xs:enumeration value="spring-beans"/>
+            <xs:enumeration value="gson"/>
+            <xs:enumeration value="hibernate-c3p0"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="version">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="3.8.1"/>
+            <xs:enumeration value="2.25"/>
+            <xs:enumeration value="5.1.41"/>
+            <xs:enumeration value="4.3.7.RELEASE"/>
+            <xs:enumeration value="2.8.0"/>
+            <xs:enumeration value="5.2.12.Final"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="scope" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pluginType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="groupId"/>
+      <xs:element type="xs:string" name="artifactId"/>
+      <xs:element type="ns:configurationType" name="configuration" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="pluginsType">
+    <xs:sequence>
+      <xs:element type="ns:pluginType" name="plugin" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="configurationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="source"/>
+      <xs:element type="xs:string" name="target"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="projectType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="modelVersion"/>
+      <xs:element type="xs:string" name="groupId"/>
+      <xs:element type="xs:string" name="artifactId"/>
+      <xs:element type="xs:string" name="packaging"/>
+      <xs:element type="xs:string" name="version"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="url"/>
+      <xs:element type="ns:dependenciesType" name="dependencies" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+      <xs:element type="ns:buildType" name="build" xmlns:ns="http://maven.apache.org/POM/4.0.0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="dependenciesType">
+    <xs:sequence>
+      <xs:element type="ns:dependencyType" name="dependency" maxOccurs="unbounded" minOccurs="0" xmlns:ns="http://maven.apache.org/POM/4.0.0">
+        <xs:annotation>
+          <xs:documentation>https://mvnrepository.com/artifact/org.glassfish.jersey.bundles/jaxrs-ri  https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-moxy  MySQL Dependencies  https://mvnrepository.com/artifact/mysql/mysql-connector-java  https://mvnrepository.com/artifact/org.springframework/spring-beans  https://mvnrepository.com/artifact/com.google.code.gson/gson  https://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
